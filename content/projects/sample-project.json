@@ -1,0 +1,21 @@
+{
+  "slug": "sample-project",
+  "title": "Sample Project Title",
+  "category": "Web Design",
+  "client": "Sample Client",
+  "year": "2024",
+  "description": "This is a sample project description that demonstrates the structure.",
+  "heroImage": "/images/sample-project/hero.jpg",
+  "galleryImages": [
+    "/images/sample-project/gallery-1.jpg",
+    "/images/sample-project/gallery-2.jpg"
+  ],
+  "challenge": "Sample challenge description that explains the problem we needed to solve.",
+  "solution": "Sample solution description that explains how we approached and solved the challenge.",
+  "results": [
+    "Sample result metric 1",
+    "Sample result metric 2",
+    "Sample result metric 3"
+  ],
+  "services": ["Design", "Development", "Strategy"]
+}
