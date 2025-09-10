@@ -50,8 +50,8 @@ export default function Footer() {
             <h3 className="text-lg font-medium mb-4">Connect</h3>
             <ul className="space-y-2">
               <li>
-                <span className="text-gray-300">
-                  Get in touch via contact form
+                <span className="text-gray-200">
+                  contact@dustinstudio.tech
                 </span>
               </li>
               <li>
@@ -69,12 +69,6 @@ export default function Footer() {
             © {currentYear} dustin studio. All rights reserved.
           </p>
           <div className="flex space-x-6 mt-4 sm:mt-0">
-            <Link href="/privacy" className="text-gray-400 hover:text-gray-300 text-sm transition-colors duration-200">
-              Privacy Policy
-            </Link>
-            <Link href="/terms" className="text-gray-400 hover:text-gray-300 text-sm transition-colors duration-200">
-              Terms of Service
-            </Link>
           </div>
         </div>
       </div>

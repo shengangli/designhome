@@ -24,7 +24,7 @@ export default function WorkPage() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6">
             Our Work
           </h1>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-lg text-gray-300 max-w-2xl mx-auto">
             A collection of projects that showcase our commitment to exceptional design, 
             innovative development, and strategic thinking.
           </p>
@@ -81,11 +81,11 @@ export default function WorkPage() {
                     {project.title}
                   </h3>
                   
-                  <p className="text-gray-600 text-sm leading-relaxed line-clamp-2">
+                  <p className="text-gray-400 text-sm leading-relaxed line-clamp-2">
                     {project.description}
                   </p>
                   
-                  <p className="text-xs text-gray-500">
+                  <p className="text-xs text-gray-300">
                     {project.client}
                   </p>
                 </div>
@@ -100,7 +100,7 @@ export default function WorkPage() {
             <h2 className="text-2xl font-medium mb-4">
               Ready to start your project?
             </h2>
-            <p className="text-gray-600 mb-8">
+            <p className="text-gray-300 mb-8">
               Let&apos;s discuss how we can bring your vision to life with exceptional design and development.
             </p>
             <Link 

@@ -69,7 +69,7 @@ export default function Navigation() {
               Work
             </Link>
             <Link 
-              href="#pricing-calculator"
+              href="/pricing"
               className={`text-sm font-medium transition-colors duration-200 ${getTextColor(isActive('#pricing-calculator'))}`}
             >
               Get Price

@@ -57,7 +57,7 @@ export default function ContactPage() {
             </svg>
           </div>
           <h1 className="text-4xl font-light mb-6">Thank You!</h1>
-          <p className="text-lg text-gray-600 mb-8">
+          <p className="text-lg text-gray-300 mb-8">
             We&apos;ve received your message and will get back to you within 24 hours.
           </p>
           <button 
@@ -89,7 +89,7 @@ export default function ContactPage() {
           <h1 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-6">
             Let&apos;s Work Together
           </h1>
-          <p className="text-xl text-gray-600 leading-relaxed max-w-2xl mx-auto">
+          <p className="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">
             Ready to create something exceptional? Tell us about your project 
             and let&apos;s explore the possibilities.
           </p>
@@ -101,7 +101,7 @@ export default function ContactPage() {
             <form onSubmit={handleSubmit} className="space-y-8">
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="name" className="block text-sm font-medium text-gray-200 mb-2">
                     Name *
                   </label>
                   <input
@@ -116,7 +116,7 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="email" className="block text-sm font-medium text-gray-200 mb-2">
                     Email *
                   </label>
                   <input
@@ -134,7 +134,7 @@ export default function ContactPage() {
 
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                 <div>
-                  <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="company" className="block text-sm font-medium text-gray-200 mb-2">
                     Company
                   </label>
                   <input
@@ -148,7 +148,7 @@ export default function ContactPage() {
                   />
                 </div>
                 <div>
-                  <label htmlFor="project" className="block text-sm font-medium text-gray-700 mb-2">
+                  <label htmlFor="project" className="block text-sm font-medium text-gray-200 mb-2">
                     Project Type
                   </label>
                   <select
@@ -169,7 +169,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label htmlFor="budget" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="budget" className="block text-sm font-medium text-gray-200 mb-2">
                   Budget Range
                 </label>
                 <select
@@ -188,7 +188,7 @@ export default function ContactPage() {
               </div>
 
               <div>
-                <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-2">
+                <label htmlFor="message" className="block text-sm font-medium text-gray-200 mb-2">
                   Project Details *
                 </label>
                 <textarea
@@ -235,7 +235,7 @@ export default function ContactPage() {
             <div className="space-y-8">
               <div>
                 <h3 className="text-xl font-medium mb-4">Get in Touch</h3>
-                <p className="text-gray-600 leading-relaxed">
+                <p className="text-gray-300 leading-relaxed">
                   We&apos;d love to hear about your project. Send us a message and 
                   we&apos;ll respond within 24 hours.
                 </p>
@@ -243,21 +243,21 @@ export default function ContactPage() {
 
               <div>
                 <h4 className="font-medium mb-2">Response Time</h4>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-300 text-sm">
                   We typically respond to all inquiries within 24 hours during business days.
                 </p>
               </div>
 
               <div>
                 <h4 className="font-medium mb-2">Project Timeline</h4>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-300 text-sm">
                   Most projects range from 4-12 weeks depending on scope and complexity.
                 </p>
               </div>
 
               <div>
                 <h4 className="font-medium mb-2">Languages</h4>
-                <p className="text-gray-600 text-sm">
+                <p className="text-gray-300 text-sm">
                   We work in English, Japanese, and Chinese to serve global markets effectively.
                 </p>
               </div>

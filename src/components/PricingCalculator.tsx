@@ -7,7 +7,7 @@ import { useRef, useState } from 'react';
 interface FormData {
   projectType: string;
   services: string[];
-  languages: string[];
+  languages: string;
   timeline: string;
   email: string;
   name: string;
@@ -44,7 +44,7 @@ export default function PricingCalculator() {
   const [formData, setFormData] = useState<FormData>({
     projectType: '',
     services: [],
-    languages: [],
+    languages: '',
     timeline: '',
     email: '',
     name: '',
@@ -54,7 +54,7 @@ export default function PricingCalculator() {
   const [showResults, setShowResults] = useState(false);
 
   const calculatePrice = () => {
-    if (!formData.projectType || formData.services.length === 0 || formData.languages.length === 0 || !formData.timeline) {
+    if (!formData.projectType || formData.services.length === 0 || !formData.languages || !formData.timeline) {
       return 0;
     }
 
@@ -63,10 +63,7 @@ export default function PricingCalculator() {
       const service = services.find(s => s.id === serviceId);
       return acc + (service?.multiplier || 0);
     }, 0);
-    const languageMultiplier = Math.max(...formData.languages.map(langId => {
-      const lang = languages.find(l => l.id === langId);
-      return lang?.multiplier || 1;
-    }));
+    const languageMultiplier = languages.find(l => l.id === formData.languages)?.multiplier || 1;
     const timelineMultiplier = timelines.find(t => t.id === formData.timeline)?.multiplier || 1;
 
     return Math.round(basePrice * serviceMultiplier * languageMultiplier * timelineMultiplier);
@@ -89,7 +86,7 @@ export default function PricingCalculator() {
           message: formData.message,
           projectType: projectTypes.find(p => p.id === formData.projectType)?.label,
           services: formData.services.map(s => services.find(srv => srv.id === s)?.label),
-          languages: formData.languages.map(l => languages.find(lang => lang.id === l)?.label),
+          languages: languages.find(lang => lang.id === formData.languages)?.label,
           timeline: timelines.find(t => t.id === formData.timeline)?.label,
           estimatedPrice: price
         })
@@ -124,7 +121,7 @@ export default function PricingCalculator() {
     switch (step) {
       case 1: return formData.projectType !== '';
       case 2: return formData.services.length > 0;
-      case 3: return formData.languages.length > 0;
+      case 3: return formData.languages !== '';
       case 4: return formData.timeline !== '';
       case 5: return formData.email !== '' && formData.name !== '';
       default: return false;
@@ -163,7 +160,7 @@ export default function PricingCalculator() {
                   setFormData({
                     projectType: '',
                     services: [],
-                    languages: [],
+                    languages: '',
                     timeline: '',
                     email: '',
                     name: '',
@@ -254,7 +251,7 @@ export default function PricingCalculator() {
                       className={`p-6 rounded-xl text-left transition-all duration-300 border ${
                         formData.projectType === type.id
                           ? 'bg-black/10 border-black/20 shadow-md'
-                          : 'bg-white/30 border-white/10 hover:bg-white/40 hover:border-white/20'
+                          : 'bg-gray-100/80 border-gray-200/50 hover:bg-gray-200/90 hover:border-gray-300/60'
                       }`}
                     >
                       <div className="flex justify-between items-center">
@@ -297,7 +294,7 @@ export default function PricingCalculator() {
                       className={`p-6 rounded-xl text-left transition-all duration-300 border ${
                         formData.services.includes(service.id)
                           ? 'bg-black/10 border-black/20 shadow-md'
-                          : 'bg-white/30 border-white/10 hover:bg-white/40 hover:border-white/20'
+                          : 'bg-gray-100/80 border-gray-200/50 hover:bg-gray-200/90 hover:border-gray-300/60'
                       }`}
                     >
                       <div className="flex justify-between items-center">
@@ -331,16 +328,11 @@ export default function PricingCalculator() {
                   {languages.map((language) => (
                     <button
                       key={language.id}
-                      onClick={() => {
-                        const newLanguages = formData.languages.includes(language.id)
-                          ? formData.languages.filter(l => l !== language.id)
-                          : [...formData.languages, language.id];
-                        setFormData({ ...formData, languages: newLanguages });
-                      }}
+                      onClick={() => setFormData({ ...formData, languages: language.id })}
                       className={`p-6 rounded-xl text-left transition-all duration-300 border ${
-                        formData.languages.includes(language.id)
+                        formData.languages === language.id
                           ? 'bg-black/10 border-black/20 shadow-md'
-                          : 'bg-white/30 border-white/10 hover:bg-white/40 hover:border-white/20'
+                          : 'bg-gray-100/80 border-gray-200/50 hover:bg-gray-200/90 hover:border-gray-300/60'
                       }`}
                     >
                       <div className="flex justify-between items-center">
@@ -348,8 +340,8 @@ export default function PricingCalculator() {
                           <h4 className="text-lg font-medium text-gray-900">{language.label}</h4>
                           <p className="text-gray-600">+{Math.round((language.multiplier - 1) * 100)}% multiplier</p>
                         </div>
-                        <div className={`w-5 h-5 rounded border-2 ${
-                          formData.languages.includes(language.id)
+                        <div className={`w-5 h-5 rounded-full border-2 ${
+                          formData.languages === language.id
                             ? 'bg-black border-black'
                             : 'border-gray-300'
                         }`} />
@@ -378,7 +370,7 @@ export default function PricingCalculator() {
                       className={`p-6 rounded-xl text-left transition-all duration-300 border ${
                         formData.timeline === timeline.id
                           ? 'bg-black/10 border-black/20 shadow-md'
-                          : 'bg-white/30 border-white/10 hover:bg-white/40 hover:border-white/20'
+                          : 'bg-gray-100/80 border-gray-200/50 hover:bg-gray-200/90 hover:border-gray-300/60'
                       }`}
                     >
                       <div className="flex justify-between items-center">
@@ -411,9 +403,9 @@ export default function PricingCalculator() {
                   <h3 className="text-3xl font-light mb-4 text-gray-900">Your Estimated Price</h3>               
                   <div className="text-5xl font-light text-black mb-8">
                     ${calculatePrice().toLocaleString()}
-                    <h5 className="text-xl text-gray-900"> Notice: price could change plus or minus 50% depends on your need</h5>
+                    <h5 className="text-xl text-gray-900"> Notice: price could change plus or minus 50% depends on your need and the size of your website</h5>
                   </div>
-                  <p className="text-gray-600 mb-8">
+                  <p className="text-gray-600 mb-8 boarder-black">
                     Enter your email to dicuss more on what you need
                   </p>
                 </div>

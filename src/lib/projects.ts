@@ -9,6 +9,7 @@ export interface Project {
   challenge: string;
   solution: string;
   services?: string[];
+  liveUrl?: string;
 }
 
 // Sample project data - replace with your actual projects
@@ -25,7 +26,8 @@ export const projects: Project[] = [
     ],
     challenge: "The client needed a portfolio that would stand out in the crowded creative industry while maintaining professional credibility and fast loading times.",
     solution: "We developed a minimal design system with carefully curated typography, strategic white space, and subtle micro-interactions that guide users through the content without distraction.",
-    services: ["UI/UX Design", "Frontend Development", "Performance Optimization"]
+    services: ["UI/UX Design", "Frontend Development", "Performance Optimization"],
+    liveUrl: ""
   },
   {
     slug: "e-commerce-platform",
@@ -71,7 +73,8 @@ export const projects: Project[] = [
       "/images/projects/cafe/cafe3.png"
     ],
     challenge: "Developing a cohesive brand identity that would work across diverse cultural contexts while maintaining strong brand recognition.",
-    solution: "Created a flexible brand system with cultural adaptability built-in, featuring modular design elements and comprehensive guidelines for global implementation. Actual site: https://web-design-cafe-ruddy.vercel.app/",
+    solution: "Created a flexible brand system with cultural adaptability built-in, featuring modular design elements and comprehensive guidelines for global implementation.",
+    liveUrl: "https://web-design-cafe-ruddy.vercel.app",
     services: ["Brand Strategy", "Visual Identity", "Brand Guidelines"]
   }
 ];

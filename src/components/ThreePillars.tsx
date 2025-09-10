@@ -8,13 +8,13 @@ import Image from 'next/image';
 const pillars = [
   {
     title: "World-Class Design Talent",
-    description: "We connect you with Japan's exceptional designers who blend minimalism with functionality",
+    description: "Connect with Japan's exceptional designers who blend minimalism with functionality",
     image: "/images/pillars/ashes-sitoula-c-B3L8NkDa4-unsplash.jpg",
     alt: "Design tools and Japanese minimalist elements"
   },
   {
     title: "Quality Without Compromise", 
-    description: "Not just beautiful designs or just clean code - we deliver both through rigorous quality control",
+    description: "We deliver both through rigorous quality control",
     image: "/images/pillars/tim-schmidbauer-E8F-reiR14w-unsplash.jpg",
     alt: "Code review and quality assurance processes"
   },
@@ -87,7 +87,7 @@ export default function ThreePillars() {
                       src={pillar.image}
                       alt={pillar.alt}
                       fill
-                      className="object-cover filter grayscale brightness-95 contrast-110 group-hover:grayscale-0 group-hover:brightness-100 group-hover:contrast-105 transition-all duration-700 ease-out group-hover:scale-102"
+                      className="object-cover filter grayscale brightness-95 contrast-110 group-hover: group-hover:brightness-100 group-hover:contrast-105 transition-all duration-700 ease-out"
                       sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
                     />
                     
@@ -117,11 +117,11 @@ export default function ThreePillars() {
                 
                 {/* Content Section */}
                 <div className="relative z-10 text-center">
-                  <h3 className="text-2xl font-medium mb-4 text-gray-800 leading-tight group-hover:text-gray-900 transition-colors duration-700 ease-out">
+                  <h3 className="text-xl font-medium mb-4 text-gray-800 leading-tight group-hover:text-gray-900 transition-colors duration-700 ease-out">
                     {pillar.title}
                   </h3>
                   
-                  <p className="text-gray-600 leading-relaxed text-lg group-hover:text-gray-700 transition-colors duration-700 ease-out">
+                  <p className="text-gray-600 leading-relaxed group-hover:text-gray-700 transition-colors duration-700 ease-out">
                     {pillar.description}
                   </p>
                   

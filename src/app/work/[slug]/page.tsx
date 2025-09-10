@@ -76,7 +76,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-light mb-6">
                 {project.title}
               </h1>
-              <p className="text-xl text-gray-600 leading-relaxed">
+              <p className="text-xl text-gray-200 leading-relaxed">
                 {project.description}
               </p>
             </div>
@@ -84,7 +84,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {/* Challenge Section */}
             <div className="mb-12">
               <h2 className="text-2xl font-medium mb-6">The Challenge</h2>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed">
                 {project.challenge}
               </p>
             </div>
@@ -92,7 +92,7 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
             {/* Solution Section */}
             <div className="mb-12">
               <h2 className="text-2xl font-medium mb-6">The Solution</h2>
-              <p className="text-gray-600 leading-relaxed">
+              <p className="text-gray-300 leading-relaxed">
                 {project.solution}
               </p>
             </div>
@@ -123,27 +123,44 @@ export default async function ProjectPage({ params }: ProjectPageProps) {
           <div className="lg:col-span-1">
             <div className="sticky top-8">
               <div className="bg-gray-50 rounded-lg p-8">
-                <h3 className="text-xl font-medium mb-6">Project Details</h3>
+                <h3 className="text-xl text-gray-900 font-medium mb-6">Project Details</h3>
                 
                 <div className="space-y-4">
                   <div>
-                    <p className="text-sm text-gray-500 uppercase tracking-wide mb-1">Client</p>
-                    <p className="font-medium">{project.client}</p>
+                    <p className="text-medium text-gray-900 uppercase tracking-wide mb-1">Client</p>
+                    <p className="font-medium text-gray-400">{project.client}</p>
                   </div>
                   
                   <div>
-                    <p className="text-sm text-gray-500 uppercase tracking-wide mb-1">Category</p>
-                    <p className="font-medium">{project.category}</p>
+                    <p className="text-medium text-gray-600 uppercase tracking-wide mb-1">Category</p>
+                    <p className="font-medium text-gray-400">{project.category}</p>
                   </div>
 
                   {project.services && project.services.length > 0 && (
                     <div>
-                      <p className="text-sm text-gray-500 uppercase tracking-wide mb-2">Services</p>
-                      <div className="space-y-1">
+                      <p className="text-medium text-gray-600 uppercase tracking-wide mb-2">Services</p>
+                      <div className="space-y-1 text-gray-400">
                         {project.services.map((service, index) => (
                           <p key={index} className="text-sm">{service}</p>
                         ))}
                       </div>
+                    </div>
+                  )}
+
+                  {project.liveUrl && (
+                    <div className="pt-4 border-t border-gray-200">
+                      <p className="text-sm text-gray-500 uppercase tracking-wide mb-2">Live Site</p>
+                      <a 
+                        href={project.liveUrl} 
+                        target="_blank" 
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center text-blue-600 hover:text-blue-700 transition-colors"
+                      >
+                        <span className="text-sm font-medium">View Live Site</span>
+                        <svg className="ml-2 w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
+                        </svg>
+                      </a>
                     </div>
                   )}
                 </div>
