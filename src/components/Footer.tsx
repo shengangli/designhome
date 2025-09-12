@@ -5,14 +5,14 @@ export default function Footer() {
 
   return (
     <footer className="bg-black text-white">
-      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-16">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-12">
+      <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 py-12">
+        <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           {/* Brand */}
           <div className="md:col-span-2">
-            <Link href="/" className="text-2xl font-light mb-4 block">
+            <Link href="/" className="text-xl font-light mb-3 block">
               dustin studio
             </Link>
-            <p className="text-gray-300 leading-relaxed max-w-md">
+            <p className="text-sm text-gray-300 leading-relaxed max-w-md">
               Complete digital solutions from concept to launch. We design, develop, 
               and deploy exceptional digital experiences with Japanese design influence.
             </p>
@@ -20,7 +20,7 @@ export default function Footer() {
 
           {/* Navigation */}
           <div>
-            <h3 className="text-lg font-medium mb-4">Navigation</h3>
+            <h3 className="text-base font-medium mb-3">Navigation</h3>
             <ul className="space-y-2">
               <li>
                 <Link href="/" className="text-gray-300 hover:text-white transition-colors duration-200">
@@ -47,15 +47,15 @@ export default function Footer() {
 
           {/* Contact */}
           <div>
-            <h3 className="text-lg font-medium mb-4">Connect</h3>
+            <h3 className="text-base font-medium mb-3">Connect</h3>
             <ul className="space-y-2">
               <li>
-                <span className="text-gray-200">
+                <span className="text-sm text-gray-200">
                   contact@dustinstudio.tech
                 </span>
               </li>
               <li>
-                <span className="text-gray-300">
+                <span className="text-sm text-gray-300">
                   Available in EN, JP, CN
                 </span>
               </li>
@@ -64,7 +64,7 @@ export default function Footer() {
         </div>
 
         {/* Bottom Bar */}
-        <div className="border-t border-gray-800 mt-12 pt-8 flex flex-col sm:flex-row justify-between items-center">
+        <div className="border-t border-gray-800 mt-8 pt-6 flex flex-col sm:flex-row justify-between items-center">
           <p className="text-gray-400 text-sm">
             © {currentYear} dustin studio. All rights reserved.
           </p>

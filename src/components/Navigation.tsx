@@ -42,9 +42,9 @@ export default function Navigation() {
       scrolled ? 'bg-white bg-opacity-95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
     }`}>
       <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className={`text-2xl font-light transition-colors duration-200 ${
+          <Link href="/" className={`text-xl font-light transition-colors duration-200 ${
             scrolled 
               ? 'text-black hover:text-gray-600' 
               : isDarkPage 
@@ -115,7 +115,7 @@ export default function Navigation() {
             <Link
               href="/"
               onClick={() => setIsOpen(false)}
-              className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
+              className={`block px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                 isActive('/') 
                   ? 'text-black bg-gray-50' 
                   : 'text-gray-600 hover:text-black hover:bg-gray-50'
@@ -126,7 +126,7 @@ export default function Navigation() {
             <Link
               href="/work"
               onClick={() => setIsOpen(false)}
-              className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
+              className={`block px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                 isActive('/work') || pathname.startsWith('/work/') 
                   ? 'text-black bg-gray-50' 
                   : 'text-gray-600 hover:text-black hover:bg-gray-50'
@@ -137,7 +137,7 @@ export default function Navigation() {
             <Link
               href="#pricing-calculator"
               onClick={() => setIsOpen(false)}
-              className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
+              className={`block px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                 isActive('#pricing-calculator') 
                   ? 'text-black bg-gray-50' 
                   : 'text-gray-600 hover:text-black hover:bg-gray-50'
@@ -148,7 +148,7 @@ export default function Navigation() {
             <Link
               href="/contact"
               onClick={() => setIsOpen(false)}
-              className={`block px-3 py-2 text-base font-medium transition-colors duration-200 ${
+              className={`block px-3 py-2 text-sm font-medium transition-colors duration-200 ${
                 isActive('/contact') 
                   ? 'text-black bg-gray-50' 
                   : 'text-gray-600 hover:text-black hover:bg-gray-50'

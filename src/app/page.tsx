@@ -7,8 +7,8 @@ export default function Home() {
   return (
     <main>
       <Hero />
+      <PortfolioPreview />      
       <ThreePillars />
-      <PortfolioPreview />
       <PricingCalculator />
     </main>
   );

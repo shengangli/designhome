@@ -61,22 +61,71 @@ export const projects: Project[] = [
     services: ["Brand Strategy", "Visual Identity", "Brand Guidelines"]
   },
   {
-    slug: "cafe-branding",
-    title: "An Artistic Getaway Cafe",
-    category: "Branding",
-    client: "Cafe Owner",
+    slug: "bag-branding",
+    title: "Clean Brand Identity from Webpage",
+    category: "Web Development",
+    client: "International Supplier",
     description: "Complete brand identity system including logo, guidelines, and digital assets for international market expansion.",
-    heroImage: "/images/projects/cafe/cafe1.png",
+    heroImage: "/images/projects/bag/bag.png",
     galleryImages: [
-      "/images/projects/cafe/cafe1.png",
-      "/images/projects/cafe/cafe2.png",
-      "/images/projects/cafe/cafe3.png"
+      "/images/projects/bag/bag.png"
     ],
     challenge: "Developing a cohesive brand identity that would work across diverse cultural contexts while maintaining strong brand recognition.",
     solution: "Created a flexible brand system with cultural adaptability built-in, featuring modular design elements and comprehensive guidelines for global implementation.",
     liveUrl: "https://web-design-cafe-ruddy.vercel.app",
     services: ["Brand Strategy", "Visual Identity", "Brand Guidelines"]
-  }
+  },
+  {
+    slug: "logistic-cn",
+    title: "Sharp Edge and Sharp Business",
+    category: "Web Development",
+    client: "Global Logistic Company",
+    description: "Building web solution for strong impressions for clients in international market expansion.",
+    heroImage: "/images/projects/logistic/logistic1.png",
+    galleryImages: [
+      "/images/projects/logistic/logistic1.png"
+    ],
+    challenge: "Clients do not have website set up, and a clear goal oriented website is needed.",
+    solution: "Designed and developed a clear message delievering website for global implementation. Using sharp edges to define the professionism. As well as using images like shipping containers to draw connections to global logisitcs",
+    liveUrl: "",
+    services: ["Brand Strategy", "Visual Identity", "Brand Guidelines"]
+  },
+  {
+    slug: "jpsite",
+    title: "Sharp Edge and Sharp Business",
+    category: "Web Development",
+    client: "Global Logistic Company",
+    description: "Building web solution for strong impressions for clients in international market expansion.",
+    heroImage: "/images/projects/jpsite/jpsite0.png",
+    galleryImages: [
+      "/images/projects/jpsite/jpsite0.png",
+      "/images/projects/jpsite/jpsite1.png",
+      "/images/projects/jpsite/jpsite2.png",
+      "/images/projects/jpsite/jpsite3.png",
+      "/images/projects/jpsite/jpsite4.png",
+    ],
+    challenge: "Clients do not have website set up, and a clear goal oriented website is needed.",
+    solution: "Designed and developed a clear message delievering website for global implementation. Using sharp edges to define the professionism. As well as using images like shipping containers to draw connections to global logisitcs",
+    liveUrl: "",
+    services: ["Brand Strategy", "Visual Identity", "Brand Guidelines"]
+  },
+  {
+    slug: "time-international",
+    title: "Use Website to Business Sales Goal",
+    category: "Web Development",
+    client: "Consumer Goods",
+    description: "Building web solution for strong impressions for clients in international market expansion.",
+    heroImage: "/images/projects/time/time0.png",
+    galleryImages: [
+      "/images/projects/time/time0.png",
+      "/images/projects/time/time1.png",
+      "/images/projects/time/time2.png",
+    ],
+    challenge: "Clients do not have website set up, and a clear goal oriented website is needed.",
+    solution: "Designed and developed a clear message delievering website for global implementation. Using sharp edges to define the professionism. As well as using images like shipping containers to draw connections to global logisitcs",
+    liveUrl: "",
+    services: ["Brand Strategy", "Visual Identity", "Brand Guidelines"]
+  },
 ];
 
 export function getProject(slug: string): Project | undefined {

@@ -130,7 +130,7 @@ export default function PricingCalculator() {
 
   if (showResults) {
     return (
-      <section className="relative py-32 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden" ref={ref}>
+      <section className="relative py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden" ref={ref}>
         <div className="absolute inset-0 opacity-25">
           <div className="absolute top-0 right-1/4 w-96 h-96 bg-gradient-to-r from-green-100 to-blue-100 rounded-full blur-3xl transform -translate-y-1/2" />
           <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-gradient-to-r from-pink-100 to-purple-100 rounded-full blur-3xl transform translate-y-1/2" />
@@ -142,14 +142,14 @@ export default function PricingCalculator() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="bg-white/40 backdrop-blur-md rounded-2xl p-12 border border-white/10 shadow-md">
-              <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-8">
-                <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-md">
+              <div className="w-12 h-12 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-6">
+                <svg className="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
                 </svg>
               </div>
-              <h3 className="text-3xl font-light mb-6 text-gray-900">Quote Sent Successfully!</h3>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
+              <h3 className="text-2xl font-light mb-4 text-gray-900">Quote Sent Successfully!</h3>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 Your personalized quote has been sent to <strong>{formData.email}</strong>. 
                 We&apos;ll be in touch within 24 hours to discuss your project in detail.
               </p>
@@ -179,7 +179,7 @@ export default function PricingCalculator() {
   }
 
   return (
-    <section className="relative py-32 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden" ref={ref}>
+    <section className="relative py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden" ref={ref}>
       <div className="absolute inset-0 opacity-25">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full blur-3xl transform -translate-y-1/2" />
         <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-gradient-to-r from-pink-100 to-orange-100 rounded-full blur-3xl transform translate-y-1/2" />
@@ -187,7 +187,7 @@ export default function PricingCalculator() {
 
       <div className="relative max-w-4xl mx-auto">
         <motion.div 
-          className="text-center mb-16"
+          className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -198,10 +198,10 @@ export default function PricingCalculator() {
             <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-gray-300" />
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-8 text-black leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-6 text-black leading-tight">
             Project Pricing Calculator
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
             Get an instant estimate for your project. Answer a few questions to receive 
             a personalized quote delivered to your inbox.
           </p>
@@ -212,12 +212,12 @@ export default function PricingCalculator() {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 40 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
-          <div className="bg-white/40 backdrop-blur-md rounded-2xl p-8 border border-white/10 shadow-sm">
+          <div className="bg-white/40 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-sm">
             {/* Progress Bar */}
-            <div className="flex items-center justify-between mb-12">
+            <div className="flex items-center justify-between mb-8">
               {[1, 2, 3, 4, 5].map((step) => (
                 <div key={step} className="flex items-center">
-                  <div className={`w-10 h-10 rounded-full flex items-center justify-center text-sm font-medium transition-all duration-300 ${
+                  <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-all duration-300 ${
                     step <= currentStep 
                       ? 'bg-black/90 text-white' 
                       : 'bg-gray-200 text-gray-400'
@@ -242,13 +242,13 @@ export default function PricingCalculator() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="text-2xl font-light mb-8 text-gray-900">What type of project do you need?</h3>
+                <h3 className="text-xl font-light mb-6 text-gray-900">What type of project do you need?</h3>
                 <div className="grid gap-4">
                   {projectTypes.map((type) => (
                     <button
                       key={type.id}
                       onClick={() => setFormData({ ...formData, projectType: type.id })}
-                      className={`p-6 rounded-xl text-left transition-all duration-300 border ${
+                      className={`p-4 rounded-xl text-left transition-all duration-300 border ${
                         formData.projectType === type.id
                           ? 'bg-black/10 border-black/20 shadow-md'
                           : 'bg-gray-100/80 border-gray-200/50 hover:bg-gray-200/90 hover:border-gray-300/60'
@@ -256,10 +256,10 @@ export default function PricingCalculator() {
                     >
                       <div className="flex justify-between items-center">
                         <div>
-                          <h4 className="text-lg font-medium text-gray-900">{type.label}</h4>
-                          <p className="text-gray-600">Starting from ${type.basePrice.toLocaleString()}</p>
+                          <h4 className="text-base font-medium text-gray-900">{type.label}</h4>
+                          <p className="text-sm text-gray-600">Starting from ${type.basePrice.toLocaleString()}</p>
                         </div>
-                        <div className={`w-5 h-5 rounded-full border-2 ${
+                        <div className={`w-4 h-4 rounded-full border-2 ${
                           formData.projectType === type.id
                             ? 'bg-black border-black'
                             : 'border-gray-300'
@@ -280,7 +280,7 @@ export default function PricingCalculator() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="text-2xl font-light mb-8 text-gray-900">Which services do you need?</h3>
+                <h3 className="text-xl font-light mb-6 text-gray-900">Which services do you need?</h3>
                 <div className="grid gap-4">
                   {services.map((service) => (
                     <button
@@ -291,7 +291,7 @@ export default function PricingCalculator() {
                           : [...formData.services, service.id];
                         setFormData({ ...formData, services: newServices });
                       }}
-                      className={`p-6 rounded-xl text-left transition-all duration-300 border ${
+                      className={`p-4 rounded-xl text-left transition-all duration-300 border ${
                         formData.services.includes(service.id)
                           ? 'bg-black/10 border-black/20 shadow-md'
                           : 'bg-gray-100/80 border-gray-200/50 hover:bg-gray-200/90 hover:border-gray-300/60'
@@ -299,10 +299,10 @@ export default function PricingCalculator() {
                     >
                       <div className="flex justify-between items-center">
                         <div>
-                          <h4 className="text-lg font-medium text-gray-900">{service.label}</h4>
-                          <p className="text-gray-600">+{Math.round((service.multiplier - 1) * 100)}% of base price</p>
+                          <h4 className="text-base font-medium text-gray-900">{service.label}</h4>
+                          <p className="text-sm text-gray-600">+{Math.round((service.multiplier - 1) * 100)}% of base price</p>
                         </div>
-                        <div className={`w-5 h-5 rounded border-2 ${
+                        <div className={`w-4 h-4 rounded border-2 ${
                           formData.services.includes(service.id)
                             ? 'bg-black border-black'
                             : 'border-gray-300'
@@ -323,13 +323,13 @@ export default function PricingCalculator() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="text-2xl font-light mb-8 text-gray-900">Language support needed?</h3>
+                <h3 className="text-xl font-light mb-6 text-gray-900">Language support needed?</h3>
                 <div className="grid gap-4">
                   {languages.map((language) => (
                     <button
                       key={language.id}
                       onClick={() => setFormData({ ...formData, languages: language.id })}
-                      className={`p-6 rounded-xl text-left transition-all duration-300 border ${
+                      className={`p-4 rounded-xl text-left transition-all duration-300 border ${
                         formData.languages === language.id
                           ? 'bg-black/10 border-black/20 shadow-md'
                           : 'bg-gray-100/80 border-gray-200/50 hover:bg-gray-200/90 hover:border-gray-300/60'
@@ -337,10 +337,10 @@ export default function PricingCalculator() {
                     >
                       <div className="flex justify-between items-center">
                         <div>
-                          <h4 className="text-lg font-medium text-gray-900">{language.label}</h4>
-                          <p className="text-gray-600">+{Math.round((language.multiplier - 1) * 100)}% multiplier</p>
+                          <h4 className="text-base font-medium text-gray-900">{language.label}</h4>
+                          <p className="text-sm text-gray-600">+{Math.round((language.multiplier - 1) * 100)}% multiplier</p>
                         </div>
-                        <div className={`w-5 h-5 rounded-full border-2 ${
+                        <div className={`w-4 h-4 rounded-full border-2 ${
                           formData.languages === language.id
                             ? 'bg-black border-black'
                             : 'border-gray-300'
@@ -361,13 +361,13 @@ export default function PricingCalculator() {
                 exit={{ opacity: 0, x: -20 }}
                 transition={{ duration: 0.3 }}
               >
-                <h3 className="text-2xl font-light mb-8 text-gray-900">What&apos;s your preferred timeline?</h3>
+                <h3 className="text-xl font-light mb-6 text-gray-900">What&apos;s your preferred timeline?</h3>
                 <div className="grid gap-4">
                   {timelines.map((timeline) => (
                     <button
                       key={timeline.id}
                       onClick={() => setFormData({ ...formData, timeline: timeline.id })}
-                      className={`p-6 rounded-xl text-left transition-all duration-300 border ${
+                      className={`p-4 rounded-xl text-left transition-all duration-300 border ${
                         formData.timeline === timeline.id
                           ? 'bg-black/10 border-black/20 shadow-md'
                           : 'bg-gray-100/80 border-gray-200/50 hover:bg-gray-200/90 hover:border-gray-300/60'
@@ -375,10 +375,10 @@ export default function PricingCalculator() {
                     >
                       <div className="flex justify-between items-center">
                         <div>
-                          <h4 className="text-lg font-medium text-gray-900">{timeline.label}</h4>
-                          <p className="text-gray-600">{timeline.multiplier > 1 ? '+' : ''}{Math.round((timeline.multiplier - 1) * 100)}% price adjustment</p>
+                          <h4 className="text-base font-medium text-gray-900">{timeline.label}</h4>
+                          <p className="text-sm text-gray-600">{timeline.multiplier > 1 ? '+' : ''}{Math.round((timeline.multiplier - 1) * 100)}% price adjustment</p>
                         </div>
-                        <div className={`w-5 h-5 rounded-full border-2 ${
+                        <div className={`w-4 h-4 rounded-full border-2 ${
                           formData.timeline === timeline.id
                             ? 'bg-black border-black'
                             : 'border-gray-300'
@@ -400,12 +400,12 @@ export default function PricingCalculator() {
                 transition={{ duration: 0.3 }}
               >
                 <div className="text-center mb-8">
-                  <h3 className="text-3xl font-light mb-4 text-gray-900">Your Estimated Price</h3>               
-                  <div className="text-5xl font-light text-black mb-8">
+                  <h3 className="text-2xl font-light mb-3 text-gray-900">Your Estimated Price</h3>               
+                  <div className="text-4xl font-light text-black mb-6">
                     ${calculatePrice().toLocaleString()}
-                    <h5 className="text-xl text-gray-900"> Notice: price could change plus or minus 50% depends on your need and the size of your website</h5>
+                    <h5 className="text-sm text-gray-600 mt-2">Notice: price could change ±50% depending on your needs and website size</h5>
                   </div>
-                  <p className="text-gray-600 mb-8 boarder-black">
+                  <p className="text-sm text-gray-600 mb-6">
                     Enter your email to dicuss more on what you need
                   </p>
                 </div>
@@ -416,26 +416,26 @@ export default function PricingCalculator() {
                     placeholder="Your Name"
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                    className="text-gray-700 w-full px-6 py-4 bg-white/50 backdrop-blur-sm border border-white/20 rounded-full focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-black/30 transition-all duration-300 text-center text-lg"
+                    className="text-gray-700 w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/20 rounded-full focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-black/30 transition-all duration-300 text-center text-base"
                   />
                   <input
                     type="email"
                     placeholder="Enter your email"
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                    className="text-gray-700 w-full px-6 py-4 bg-white/50 backdrop-blur-sm border border-white/20 rounded-full focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-black/30 transition-all duration-300 text-center text-lg"
+                    className="text-gray-700 w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/20 rounded-full focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-black/30 transition-all duration-300 text-center text-base"
                   />
                   <textarea
                     placeholder="Tell us more about your project... (optional)"
                     value={formData.message}
                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
                     rows={4}
-                    className="text-gray-700 w-full px-6 py-4 bg-white/50 backdrop-blur-sm border border-white/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-black/30 transition-all duration-300 text-lg resize-none"
+                    className="text-gray-700 w-full px-4 py-3 bg-white/50 backdrop-blur-sm border border-white/20 rounded-2xl focus:outline-none focus:ring-2 focus:ring-black/20 focus:border-black/30 transition-all duration-300 text-base resize-none"
                   />
                   <button
                     onClick={handleSubmitEmail}
                     disabled={!formData.email || !formData.name || isSubmitting}
-                    className="w-full px-6 py-4 bg-black/90 backdrop-blur-sm text-white rounded-full hover:bg-black transition-all duration-300 font-medium shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full px-4 py-3 bg-black/90 backdrop-blur-sm text-white rounded-full hover:bg-black transition-all duration-300 font-medium shadow-lg hover:shadow-xl disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {isSubmitting ? 'Sending Lead...' : 'Send Enquiry'}
                   </button>
@@ -444,18 +444,18 @@ export default function PricingCalculator() {
             )}
 
             {/* Navigation */}
-            <div className="flex justify-between mt-12">
+            <div className="flex justify-between mt-8">
               <button
                 onClick={prevStep}
                 disabled={currentStep === 1}
-                className="px-6 py-3 text-gray-600 hover:text-gray-900 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 text-gray-600 hover:text-gray-900 transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 ← Back
               </button>
               <button
                 onClick={nextStep}
                 disabled={currentStep === 5 || !isStepValid(currentStep)}
-                className="px-6 py-3 bg-black/10 hover:bg-black/20 text-gray-900 rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                className="px-4 py-2 bg-black/10 hover:bg-black/20 text-gray-900 rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
                 {currentStep === 4 ? 'View Quote' : 'Next'} →
               </button>

@@ -13,7 +13,7 @@ export default function PortfolioPreview() {
   const projects = getAllProjects().slice(0, 6); // Show first 6 projects
 
   return (
-    <section className="relative py-32 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-white via-gray-50 to-gray-100 overflow-hidden" ref={ref}>
+    <section className="relative py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-white via-gray-50 to-gray-100 overflow-hidden" ref={ref}>
       {/* Background Design Elements */}
       <div className="absolute inset-0 opacity-25">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full blur-3xl transform -translate-y-1/2" />
@@ -22,7 +22,7 @@ export default function PortfolioPreview() {
 
       <div className="relative max-w-7xl mx-auto">
         <motion.div 
-          className="text-center mb-24"
+          className="text-center mb-16"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
@@ -33,16 +33,16 @@ export default function PortfolioPreview() {
             <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-gray-300" />
           </div>
 
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-light mb-8 text-black leading-tight">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-6 text-black leading-tight">
             Selected Work
           </h2>
-          <p className="text-xl text-gray-600 max-w-3xl mx-auto mb-8 leading-relaxed">
+          <p className="text-lg text-gray-600 max-w-2xl mx-auto mb-6 leading-relaxed">
             A showcase of our latest projects across different industries and disciplines, 
             each crafted with precision and creative excellence
           </p>
           <Link 
             href="/work"
-            className="group inline-flex items-center px-6 py-3 bg-white/60 backdrop-blur-sm text-black hover:bg-white/80 transition-all duration-300 font-medium rounded-full border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl"
+            className="group inline-flex items-center px-4 py-2 bg-white/60 backdrop-blur-sm text-black hover:bg-white/80 transition-all duration-300 font-medium rounded-full border border-white/20 hover:border-white/40 shadow-lg hover:shadow-xl text-sm"
           >
             <span>View All Projects</span>
             <svg 
@@ -61,7 +61,7 @@ export default function PortfolioPreview() {
           </Link>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {projects.map((project, index) => (
             <motion.div
               key={project.slug}
@@ -74,12 +74,12 @@ export default function PortfolioPreview() {
               }}
             >
               <Link href={`/work/${project.slug}`} className="group block">
-                <div className="relative bg-white/40 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-sm hover:shadow-md hover:bg-white/50 hover:border-white/20 transition-all duration-700 ease-out h-full">
+                <div className="relative bg-white/40 backdrop-blur-md rounded-2xl p-4 border border-white/10 shadow-sm hover:shadow-md hover:bg-white/50 hover:border-white/20 transition-all duration-700 ease-out h-full">
                   {/* Decorative Elements */}
                   <div className="absolute top-0 right-0 w-16 h-16 bg-gradient-to-br from-gray-100/50 to-transparent rounded-2xl transform rotate-45 translate-x-6 -translate-y-6" />
                   
                   {/* Project Image */}
-                  <div className="relative overflow-hidden rounded-xl mb-6 aspect-[4/3] bg-gray-100">
+                  <div className="relative overflow-hidden rounded-xl mb-4 aspect-[4/3] bg-gray-900">
                     <Image
                       src={project.heroImage}
                       alt={project.title}
@@ -90,8 +90,8 @@ export default function PortfolioPreview() {
                     <div className="absolute inset-0 bg-gradient-to-t from-black/20 via-transparent to-transparent group-hover:from-black/30 transition-all duration-300" />
                     
                     {/* Category Badge */}
-                    <div className="absolute top-4 left-4">
-                      <div className="px-3 py-1 bg-black/50 backdrop-blur-sm rounded-full">
+                    <div className="absolute top-3 left-3">
+                      <div className="px-2 py-1 bg-black/50 backdrop-blur-sm rounded-full">
                         <span className="text-white/90 text-xs font-medium uppercase tracking-wider">
                           {project.category}
                         </span>
@@ -100,11 +100,11 @@ export default function PortfolioPreview() {
                   </div>
                   
                   {/* Project Info */}
-                  <div className="space-y-3 relative z-10">
-                    <h3 className="text-xl font-semibold text-gray-900 group-hover:text-black transition-colors duration-300 leading-tight">
+                  <div className="space-y-2 relative z-10">
+                    <h3 className="text-lg font-semibold text-gray-900 group-hover:text-black transition-colors duration-300 leading-tight">
                       {project.title}
                     </h3>
-                    <p className="text-gray-600 group-hover:text-gray-700 transition-colors duration-300 line-clamp-2 leading-relaxed">
+                    <p className="text-sm text-gray-600 group-hover:text-gray-700 transition-colors duration-300 line-clamp-2 leading-relaxed">
                       {project.description}
                     </p>
                     
