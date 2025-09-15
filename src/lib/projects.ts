@@ -14,28 +14,28 @@ export interface Project {
 
 // Sample project data - replace with your actual projects
 export const projects: Project[] = [
-  {
-    slug: "edux-landingpage",
-    title: "Minimal Website",
-    category: "Web Design",
-    client: "Education Startup",
-    description: "A clean website showcasing with directional design apporach.",
-    heroImage: "/images/projects/EDUX.png",
-    galleryImages: [
-      "/images/projects/EDUX.png"
-    ],
-    challenge: "The client needed a portfolio that would stand out in the crowded creative industry while maintaining professional credibility and fast loading times.",
-    solution: "We developed a minimal design system with carefully curated typography, strategic white space, and subtle micro-interactions that guide users through the content without distraction.",
-    services: ["UI/UX Design", "Frontend Development", "Performance Optimization"],
-    liveUrl: ""
-  },
+  // {
+  //   slug: "edux-landingpage",
+  //   title: "Minimal Website",
+  //   category: "Web Design",
+  //   client: "Education Startup",
+  //   description: "A clean website showcasing with directional design apporach.",
+  //   heroImage: "/images/projects/EDUX.png",
+  //   galleryImages: [
+  //     "/images/projects/EDUX.png"
+  //   ],
+  //   challenge: "The client needed a portfolio that would stand out in the crowded creative industry while maintaining professional credibility and fast loading times.",
+  //   solution: "We developed a minimal design system with carefully curated typography, strategic white space, and subtle micro-interactions that guide users through the content without distraction.",
+  //   services: ["UI/UX Design", "Frontend Development", "Performance Optimization"],
+  //   liveUrl: ""
+  // },
   {
     slug: "e-commerce-platform",
     title: "Influencer Profit Website in 3 days",
     category: "Web Development",
     client: "Influencer",
     description: "Modern e-commerce platform with advanced filtering, real-time inventory, and seamless checkout experience.",
-    heroImage: "/images/projects/hokkaidomeimei/hkdm1.png",
+    heroImage: "/images/projects/hokkaidomeimei/hkdm1-1.png",
     galleryImages: [
       "/images/projects/hokkaidomeimei/hkdm1.png",
       "/images/projects/hokkaidomeimei/hkdm2.png"
@@ -58,7 +58,8 @@ export const projects: Project[] = [
     ],
     challenge: "Developing a cohesive brand identity that would work across diverse cultural contexts while maintaining strong brand recognition.",
     solution: "Created a flexible brand system with cultural adaptability built-in, featuring modular design elements and comprehensive guidelines for global implementation.",
-    services: ["Brand Strategy", "Visual Identity", "Brand Guidelines"]
+    services: ["Brand Strategy", "Visual Identity", "Brand Guidelines"],
+    liveUrl: "https://cafe.dustinstudio.tech"
   },
   {
     slug: "bag-branding",
@@ -72,8 +73,8 @@ export const projects: Project[] = [
     ],
     challenge: "Developing a cohesive brand identity that would work across diverse cultural contexts while maintaining strong brand recognition.",
     solution: "Created a flexible brand system with cultural adaptability built-in, featuring modular design elements and comprehensive guidelines for global implementation.",
-    liveUrl: "https://web-design-cafe-ruddy.vercel.app",
-    services: ["Brand Strategy", "Visual Identity", "Brand Guidelines"]
+    services: ["Visual Identity", "Web Development"],
+    liveUrl: "https://backpack.dustinstudio.tech"
   },
   {
     slug: "logistic-cn",
@@ -104,10 +105,10 @@ export const projects: Project[] = [
       "/images/projects/jpsite/jpsite3.png",
       "/images/projects/jpsite/jpsite4.png",
     ],
-    challenge: "Clients do not have website set up, and a clear goal oriented website is needed.",
-    solution: "Designed and developed a clear message delievering website for global implementation. Using sharp edges to define the professionism. As well as using images like shipping containers to draw connections to global logisitcs",
+    challenge: "",
+    solution: "",
     liveUrl: "",
-    services: ["Brand Strategy", "Visual Identity", "Brand Guidelines"]
+    services: ["Brand Color", "Visual Identity", "Web Development"]
   },
   {
     slug: "time-international",
@@ -115,16 +116,16 @@ export const projects: Project[] = [
     category: "Web Development",
     client: "Consumer Goods",
     description: "Building web solution for strong impressions for clients in international market expansion.",
-    heroImage: "/images/projects/time/time0.png",
+    heroImage: "/images/projects/time/time1.png",
     galleryImages: [
       "/images/projects/time/time0.png",
       "/images/projects/time/time1.png",
       "/images/projects/time/time2.png",
     ],
-    challenge: "Clients do not have website set up, and a clear goal oriented website is needed.",
-    solution: "Designed and developed a clear message delievering website for global implementation. Using sharp edges to define the professionism. As well as using images like shipping containers to draw connections to global logisitcs",
+    challenge: "Product impression is needed",
+    solution: "Designed and developed a strong HERO section to deliver the product impression. As well as using images to draw connections to global logisitcs",
     liveUrl: "",
-    services: ["Brand Strategy", "Visual Identity", "Brand Guidelines"]
+    services: ["Brand Strategy", "Visual Identity", "Web Development"]
   },
 ];
 

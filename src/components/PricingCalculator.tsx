@@ -15,15 +15,15 @@ interface FormData {
 }
 
 const projectTypes = [
-  { id: 'landing', label: 'Landing Page (Great for marketing)', basePrice: 50 },
+  { id: 'landing', label: 'Landing Page (Great for marketing)', basePrice: 70 },
   { id: 'website', label: 'Multi-page Website (Best at collecting leads and building PR)', basePrice: 150 },
-  { id: 'webapp', label: 'Web App with DB/CMS', basePrice: 500 }
+  { id: 'webapp', label: 'Web App with DB/CMS', basePrice: 700 }
 ];
 
 const services = [
-  { id: 'design', label: 'Design', multiplier: 1.0 },
-  { id: 'development', label: '+ Development: (Most popular)', multiplier: 1.2 },
-  { id: 'deploy', label: '+ Deploy with SEO & Hosting', multiplier: 1.5 }
+  { id: 'design', label: 'Design', multiplier: 1.2 },
+  { id: 'development', label: '+ Development: (Most popular)', multiplier: 1.5 },
+  { id: 'deploy', label: '+ Deploy with SEO & Hosting (Monthly fee applies separartely', multiplier: 1.6 }
 ];
 
 const languages = [
@@ -34,7 +34,7 @@ const languages = [
 
 const timelines = [
   { id: 'rush', label: 'Under 1 week (Rush)', multiplier: 1.8 },
-  { id: 'standard', label: '3-4 weeks (Standard)', multiplier: 1.0 }
+  { id: 'standard', label: '1-4 weeks (Standard)', multiplier: 1.0 }
 ];
 
 export default function PricingCalculator() {
