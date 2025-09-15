@@ -32,11 +32,11 @@ export default function Footer() {
                   Work
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link href="/about" className="text-gray-300 hover:text-white transition-colors duration-200">
                   About
                 </Link>
-              </li>
+              </li> */}
               <li>
                 <Link href="/contact" className="text-gray-300 hover:text-white transition-colors duration-200">
                   Contact
