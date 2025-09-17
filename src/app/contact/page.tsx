@@ -156,7 +156,7 @@ export default function ContactPage() {
                     name="project"
                     value={formData.project}
                     onChange={handleChange}
-                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
+                    className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 text-gray-400"
                   >
                     <option value="">Select project type</option>
                     <option value="web-design">Web Design</option>
@@ -170,20 +170,20 @@ export default function ContactPage() {
 
               <div>
                 <label htmlFor="budget" className="block text-sm font-medium text-gray-200 mb-2">
-                  Budget Range
+                  Plan
                 </label>
                 <select
                   id="budget"
                   name="budget"
                   value={formData.budget}
                   onChange={handleChange}
-                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200"
+                  className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-black focus:border-transparent transition-all duration-200 text-gray-400"
                 >
                   <option value="">Select budget range</option>
-                  <option value="5k-10k">$5,000 - $10,000</option>
-                  <option value="10k-25k">$10,000 - $25,000</option>
-                  <option value="25k-50k">$25,000 - $50,000</option>
-                  <option value="50k+">$50,000+</option>
+                  <option value="Landing Page Plan">Landing Page Plan</option>
+                  <option value="Core Website Plan">Core Website Plan</option>
+                  <option value="Pro Plan">Pro Plan</option>
+                  <option value="Undecided">Undecided</option>
                 </select>
               </div>
 

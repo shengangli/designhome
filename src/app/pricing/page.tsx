@@ -1,4 +1,5 @@
 import PricingCalculator from '@/components/PricingCalculator';
+import PricingPlans from '@/components/PricingPlans';
 import { Metadata } from 'next';
 
 export const metadata: Metadata = {
@@ -9,6 +10,7 @@ export const metadata: Metadata = {
 export default function PricingPage() {
   return (
     <main>
+      <PricingPlans />
       <PricingCalculator />
     </main>
   );

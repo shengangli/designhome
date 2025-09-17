@@ -9,6 +9,10 @@ interface FormData {
   services: string[];
   languages: string;
   timeline: string;
+  hosting: string;
+  domain: string;
+  emailService: string;
+  addons: string[];
   email: string;
   name: string;
   message: string;
@@ -37,6 +41,32 @@ const timelines = [
   { id: 'standard', label: '1-4 weeks (Standard)', multiplier: 1.0 }
 ];
 
+const hostingOptions = [
+  { id: 'vercel', label: 'Under Dustin Hosting (Recommended)', price: 0, description: 'Free tier, fast global CDN (Maintainance cost apply after release' },
+  { id: 'aws-aliyun', label: 'AWS EC2', price: 100, description: 'Set up cost for dedicated instance' },
+  { id: 'custom', label: 'Your own hosting (Custom plan)', price: 100, description: 'Setup fee $100, we deploy to your server' }
+];
+
+const domainOptions = [
+  { id: 'com', label: '.com domain', price: 0, description: 'We will give you a free domain' },
+  { id: 'others', label: 'Other domains (.io, .ai, etc)', price: 0, description: 'Premium domains, prices vary' },
+  { id: 'existing', label: 'I have my own domain', price: 0, description: 'We\'ll configure your existing domain' }
+];
+
+const emailServices = [
+  { id: 'none', label: 'No email needed (I will set up by myself', price: 0 },
+  { id: 'basic', label: 'Basic email', price: 25, description: 'Set up email for you' }
+];
+
+const additionalAddons = [
+  { id: 'monitoring', label: 'Performance Monitoring', price: 30, description: 'Real-time alerts & analytics' },
+  { id: 'backup', label: 'Automated Backups', price: 20, description: 'Daily backups with 30-day retention' },
+  { id: 'cdn', label: 'Premium CDN', price: 40, description: 'Enhanced global content delivery' },
+  { id: 'seo', label: 'Advanced SEO Package', price: 150, description: 'Schema markup, sitemap, optimization' },
+  { id: 'analytics', label: 'Custom Analytics Dashboard', price: 100, description: 'Detailed user behavior tracking' },
+  { id: 'multilang', label: 'Translation Services', price: 200, description: 'Professional content translation' }
+];
+
 export default function PricingCalculator() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true, margin: "-100px" });
@@ -46,6 +76,10 @@ export default function PricingCalculator() {
     services: [],
     languages: '',
     timeline: '',
+    hosting: '',
+    domain: '',
+    emailService: '',
+    addons: [],
     email: '',
     name: '',
     message: ''
@@ -66,7 +100,28 @@ export default function PricingCalculator() {
     const languageMultiplier = languages.find(l => l.id === formData.languages)?.multiplier || 1;
     const timelineMultiplier = timelines.find(t => t.id === formData.timeline)?.multiplier || 1;
 
-    return Math.round(basePrice * serviceMultiplier * languageMultiplier * timelineMultiplier);
+    let total = Math.round(basePrice * serviceMultiplier * languageMultiplier * timelineMultiplier);
+
+    // Add hosting price
+    const hostingPrice = hostingOptions.find(h => h.id === formData.hosting)?.price || 0;
+    total += hostingPrice;
+
+    // Add domain price
+    const domainPrice = domainOptions.find(d => d.id === formData.domain)?.price || 0;
+    total += domainPrice;
+
+    // Add email service price
+    const emailPrice = emailServices.find(e => e.id === formData.emailService)?.price || 0;
+    total += emailPrice;
+
+    // Add addon prices
+    const addonPrices = formData.addons.reduce((acc, addonId) => {
+      const addon = additionalAddons.find(a => a.id === addonId);
+      return acc + (addon?.price || 0);
+    }, 0);
+    total += addonPrices;
+
+    return total;
   };
 
   const handleSubmitEmail = async () => {
@@ -88,6 +143,10 @@ export default function PricingCalculator() {
           services: formData.services.map(s => services.find(srv => srv.id === s)?.label),
           languages: languages.find(lang => lang.id === formData.languages)?.label,
           timeline: timelines.find(t => t.id === formData.timeline)?.label,
+          hosting: hostingOptions.find(h => h.id === formData.hosting)?.label,
+          domain: domainOptions.find(d => d.id === formData.domain)?.label,
+          emailService: emailServices.find(e => e.id === formData.emailService)?.label,
+          addons: formData.addons.map(a => additionalAddons.find(addon => addon.id === a)?.label),
           estimatedPrice: price
         })
       });
@@ -106,7 +165,7 @@ export default function PricingCalculator() {
   };
 
   const nextStep = () => {
-    if (currentStep < 5) {
+    if (currentStep < 9) {
       setCurrentStep(currentStep + 1);
     }
   };
@@ -123,7 +182,11 @@ export default function PricingCalculator() {
       case 2: return formData.services.length > 0;
       case 3: return formData.languages !== '';
       case 4: return formData.timeline !== '';
-      case 5: return formData.email !== '' && formData.name !== '';
+      case 5: return formData.hosting !== '';
+      case 6: return formData.domain !== '';
+      case 7: return formData.emailService !== '';
+      case 8: return true; // Addons are optional
+      case 9: return formData.email !== '' && formData.name !== '';
       default: return false;
     }
   };
@@ -162,6 +225,10 @@ export default function PricingCalculator() {
                     services: [],
                     languages: '',
                     timeline: '',
+                    hosting: '',
+                    domain: '',
+                    emailService: '',
+                    addons: [],
                     email: '',
                     name: '',
                     message: ''
@@ -179,14 +246,14 @@ export default function PricingCalculator() {
   }
 
   return (
-    <section className="relative py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden" ref={ref}>
+    <section id="calculator-section" className="relative py-20 px-6 sm:px-8 lg:px-12 bg-gradient-to-br from-gray-50 via-white to-gray-100 overflow-hidden" ref={ref}>
       <div className="absolute inset-0 opacity-25">
         <div className="absolute top-0 right-1/4 w-96 h-96 bg-gradient-to-r from-purple-100 to-blue-100 rounded-full blur-3xl transform -translate-y-1/2" />
         <div className="absolute bottom-0 left-1/4 w-80 h-80 bg-gradient-to-r from-pink-100 to-orange-100 rounded-full blur-3xl transform translate-y-1/2" />
       </div>
 
       <div className="relative max-w-4xl mx-auto">
-        <motion.div 
+        <motion.div
           className="text-center mb-12"
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
@@ -194,16 +261,16 @@ export default function PricingCalculator() {
         >
           <div className="inline-flex items-center gap-4 mb-8">
             <div className="w-12 h-[1px] bg-gradient-to-r from-transparent to-gray-300" />
-            <span className="text-sm font-medium text-gray-500 uppercase tracking-[0.2em]">Calculator</span>
+            <span className="text-sm font-medium text-gray-500 uppercase tracking-[0.2em]">Custom Quote</span>
             <div className="w-12 h-[1px] bg-gradient-to-l from-transparent to-gray-300" />
           </div>
 
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-light mb-6 text-black leading-tight">
-            Project Pricing Calculator
+            Need Something Specific?
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Get an instant estimate for your project. Answer a few questions to receive 
-            a personalized quote delivered to your inbox.
+            Our packages don't fit your needs? Use our calculator to get a customized quote
+            based on your specific requirements. Prices may vary lower depending on your needs.
           </p>
         </motion.div>
 
@@ -214,8 +281,8 @@ export default function PricingCalculator() {
         >
           <div className="bg-white/40 backdrop-blur-md rounded-2xl p-6 border border-white/10 shadow-sm">
             {/* Progress Bar */}
-            <div className="flex items-center justify-between mb-8">
-              {[1, 2, 3, 4, 5].map((step) => (
+            <div className="flex items-center justify-between mb-8 overflow-x-auto py-2">
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((step) => (
                 <div key={step} className="flex items-center">
                   <div className={`w-8 h-8 rounded-full flex items-center justify-center text-xs font-medium transition-all duration-300 ${
                     step <= currentStep 
@@ -224,8 +291,8 @@ export default function PricingCalculator() {
                   }`}>
                     {step}
                   </div>
-                  {step < 5 && (
-                    <div className={`h-[2px] w-12 sm:w-16 mx-2 transition-all duration-300 ${
+                  {step < 9 && (
+                    <div className={`h-[2px] w-8 sm:w-12 mx-1 transition-all duration-300 ${
                       step < currentStep ? 'bg-black/90' : 'bg-gray-200'
                     }`} />
                   )}
@@ -390,10 +457,179 @@ export default function PricingCalculator() {
               </motion.div>
             )}
 
-            {/* Step 5: Email & Results */}
+            {/* Step 5: Hosting */}
             {currentStep === 5 && (
               <motion.div
                 key="step5"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3 className="text-xl font-light mb-6 text-gray-900">Choose your hosting solution</h3>
+                <div className="grid gap-4">
+                  {hostingOptions.map((hosting) => (
+                    <button
+                      key={hosting.id}
+                      onClick={() => setFormData({ ...formData, hosting: hosting.id })}
+                      className={`p-4 rounded-xl text-left transition-all duration-300 border ${
+                        formData.hosting === hosting.id
+                          ? 'bg-black/10 border-black/20 shadow-md'
+                          : 'bg-gray-100/80 border-gray-200/50 hover:bg-gray-200/90 hover:border-gray-300/60'
+                      }`}
+                    >
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h4 className="text-base font-medium text-gray-900">{hosting.label}</h4>
+                          <p className="text-sm text-gray-600">{hosting.description}</p>
+                          {hosting.price > 0 && (
+                            <p className="text-sm font-medium text-gray-700 mt-1">+${hosting.price}</p>
+                          )}
+                        </div>
+                        <div className={`w-4 h-4 rounded-full border-2 ${
+                          formData.hosting === hosting.id
+                            ? 'bg-black border-black'
+                            : 'border-gray-300'
+                        }`} />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 6: Domain */}
+            {currentStep === 6 && (
+              <motion.div
+                key="step6"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3 className="text-xl font-light mb-6 text-gray-900">Select your domain type</h3>
+                <div className="grid gap-4">
+                  {domainOptions.map((domain) => (
+                    <button
+                      key={domain.id}
+                      onClick={() => setFormData({ ...formData, domain: domain.id })}
+                      className={`p-4 rounded-xl text-left transition-all duration-300 border ${
+                        formData.domain === domain.id
+                          ? 'bg-black/10 border-black/20 shadow-md'
+                          : 'bg-gray-100/80 border-gray-200/50 hover:bg-gray-200/90 hover:border-gray-300/60'
+                      }`}
+                    >
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h4 className="text-base font-medium text-gray-900">{domain.label}</h4>
+                          <p className="text-sm text-gray-600">{domain.description}</p>
+                          {domain.price > 0 && (
+                            <p className="text-sm font-medium text-gray-700 mt-1">+${domain.price}</p>
+                          )}
+                        </div>
+                        <div className={`w-4 h-4 rounded-full border-2 ${
+                          formData.domain === domain.id
+                            ? 'bg-black border-black'
+                            : 'border-gray-300'
+                        }`} />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 7: Email Service */}
+            {currentStep === 7 && (
+              <motion.div
+                key="step7"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3 className="text-xl font-light mb-6 text-gray-900">Do you need email services?</h3>
+                <div className="grid gap-4">
+                  {emailServices.map((email) => (
+                    <button
+                      key={email.id}
+                      onClick={() => setFormData({ ...formData, emailService: email.id })}
+                      className={`p-4 rounded-xl text-left transition-all duration-300 border ${
+                        formData.emailService === email.id
+                          ? 'bg-black/10 border-black/20 shadow-md'
+                          : 'bg-gray-100/80 border-gray-200/50 hover:bg-gray-200/90 hover:border-gray-300/60'
+                      }`}
+                    >
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h4 className="text-base font-medium text-gray-900">{email.label}</h4>
+                          {email.description && (
+                            <p className="text-sm text-gray-600">{email.description}</p>
+                          )}
+                          {email.price > 0 && (
+                            <p className="text-sm font-medium text-gray-700 mt-1">+${email.price}</p>
+                          )}
+                        </div>
+                        <div className={`w-4 h-4 rounded-full border-2 ${
+                          formData.emailService === email.id
+                            ? 'bg-black border-black'
+                            : 'border-gray-300'
+                        }`} />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 8: Additional Add-ons */}
+            {currentStep === 8 && (
+              <motion.div
+                key="step8"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.3 }}
+              >
+                <h3 className="text-xl font-light mb-6 text-gray-900">Select additional services (optional)</h3>
+                <div className="grid gap-4">
+                  {additionalAddons.map((addon) => (
+                    <button
+                      key={addon.id}
+                      onClick={() => {
+                        const newAddons = formData.addons.includes(addon.id)
+                          ? formData.addons.filter(a => a !== addon.id)
+                          : [...formData.addons, addon.id];
+                        setFormData({ ...formData, addons: newAddons });
+                      }}
+                      className={`p-4 rounded-xl text-left transition-all duration-300 border ${
+                        formData.addons.includes(addon.id)
+                          ? 'bg-black/10 border-black/20 shadow-md'
+                          : 'bg-gray-100/80 border-gray-200/50 hover:bg-gray-200/90 hover:border-gray-300/60'
+                      }`}
+                    >
+                      <div className="flex justify-between items-center">
+                        <div>
+                          <h4 className="text-base font-medium text-gray-900">{addon.label}</h4>
+                          <p className="text-sm text-gray-600">{addon.description}</p>
+                          <p className="text-sm font-medium text-gray-700 mt-1">+${addon.price}</p>
+                        </div>
+                        <div className={`w-4 h-4 rounded border-2 ${
+                          formData.addons.includes(addon.id)
+                            ? 'bg-black border-black'
+                            : 'border-gray-300'
+                        }`} />
+                      </div>
+                    </button>
+                  ))}
+                </div>
+              </motion.div>
+            )}
+
+            {/* Step 9: Email & Results */}
+            {currentStep === 9 && (
+              <motion.div
+                key="step9"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 exit={{ opacity: 0, x: -20 }}
@@ -403,10 +639,10 @@ export default function PricingCalculator() {
                   <h3 className="text-2xl font-light mb-3 text-gray-900">Your Estimated Price</h3>               
                   <div className="text-4xl font-light text-black mb-6">
                     ${calculatePrice().toLocaleString()}
-                    <h5 className="text-sm text-gray-600 mt-2">Notice: price could change ±50% depending on your needs and website size</h5>
+                    <h5 className="text-sm text-gray-600 mt-2">* Custom pricing - may be lower based on specific requirements</h5>
                   </div>
                   <p className="text-sm text-gray-600 mb-6">
-                    Enter your email to dicuss more on what you need
+                    Enter your email to discuss your specific requirements and get a final quote
                   </p>
                 </div>
 
@@ -454,10 +690,10 @@ export default function PricingCalculator() {
               </button>
               <button
                 onClick={nextStep}
-                disabled={currentStep === 5 || !isStepValid(currentStep)}
+                disabled={currentStep === 9 || !isStepValid(currentStep)}
                 className="px-4 py-2 bg-black/10 hover:bg-black/20 text-gray-900 rounded-full transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                {currentStep === 4 ? 'View Quote' : 'Next'} →
+                {currentStep === 8 ? 'View Quote' : 'Next'} →
               </button>
             </div>
           </div>
