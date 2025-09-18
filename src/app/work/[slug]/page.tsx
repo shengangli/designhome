@@ -1,6 +1,5 @@
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
-import Link from 'next/link';
 import { getProject, getAllProjects } from '@/lib/projects';
 import ProjectNavigation from '@/components/ProjectNavigation';
 import { Metadata } from 'next';

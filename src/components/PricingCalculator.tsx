@@ -269,7 +269,7 @@ export default function PricingCalculator() {
             Need Something Specific?
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
-            Our packages don't fit your needs? Use our calculator to get a customized quote
+            Our packages don&apos;t fit your needs? Use our calculator to get a customized quote
             based on your specific requirements. Prices may vary lower depending on your needs.
           </p>
         </motion.div>
